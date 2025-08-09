@@ -1,4 +1,5 @@
-import random
+import random # using the random library from the pythons standard libraries 
+              # https://docs.python.org/3/library/random.html#random.choices
 
 """
 This is the simple choice engine. the first part of the Stat engine. Its a simple python script that takes
@@ -26,10 +27,28 @@ def get_wants():
     return wants
 
 def pick_choice(choices):
-    names = [c[0] for c in choices]
-    weights = [c[1] for c in choices]
+
+    # example for choices: choices = [("Pizza", 10), ("Salad", 2), ("Gym", 5)]
+    
+    names = []   # List to store the names of the choices
+    weights = [] # List to store how much you want each choice
+
+    for item in choices:
+        name = item[0]      # First part of the tuple (e.g. "Pizza")
+        weight = item[1]    # Second part of the tuple (e.g. 10)
+        names.append(name)
+        weights.append(weight)
     
     return random.choices(names, weights=weights, k=1)[0]
+    # Return a k sized list of elements chosen from the population with replacement. 
+    # If the relative weights are specified, the selection probability for each element is proportional 
+    # to its weight.
+
+"""
+The random function picks random elements with "replacement"
+    replacement: you can pick the same thing more than once
+"""
+
 
 def main():
     print(" Welcome to the Choice Machine !")
